@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Jordan — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg2: #f5f4f0;
+      --text: #1a1a18;
+      --text2: #5a5a56;
+      --text3: #9a9890;
+      --border: rgba(0,0,0,0.1);
+      --border2: rgba(0,0,0,0.18);
+      --info-bg: #e6f1fb;
+      --info-text: #185fa5;
+      --radius: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a;
+        --bg2: #252522;
+        --text: #e8e6de;
+        --text2: #a8a6a0;
+        --text3: #6a6860;
+        --border: rgba(255,255,255,0.1);
+        --border2: rgba(255,255,255,0.18);
+        --info-bg: #0c2d50;
+        --info-text: #85b7eb;
+      }
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg2);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1rem 4rem;
+    }
+
+    .card {
+      background: var(--bg);
+      border-radius: 20px;
+      border: 0.5px solid var(--border);
+      padding: 2.5rem 2.5rem 2rem;
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .bio-header {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: var(--info-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--info-text);
+      flex-shrink: 0;
+      border: 0.5px solid var(--border);
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .avatar:hover::after {
+      content: 'Change photo';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: none;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--info-text);
+      background: var(--info-bg);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      border: 0.5px solid var(--border);
+    }
+
+    .role-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--info-text);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--text2);
+    }
+
+    .location {
+      font-size: 13px;
+      color: var(--text3);
+      margin-top: 4px;
+    }
+
+    hr {
+      border: none;
+      border-top: 0.5px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    .bio-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text2);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 0.75rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-tag {
+      font-size: 13px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 0.5px solid var(--border2);
+      color: var(--text2);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .skill-tag:hover,
+    .skill-tag.active {
+      border-color: var(--info-text);
+      color: var(--info-text);
+      background: var(--info-bg);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg2);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text);
+      display: block;
+    }
+
+    .stat-lbl {
+      font-size: 12px;
+      color: var(--text3);
+      margin-top: 3px;
+      display: block;
+    }
+
+    .links-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      border: 0.5px solid var(--border2);
+      background: var(--bg);
+      color: var(--text2);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .link-btn:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    .link-btn.primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    .link-btn.primary:hover {
+      opacity: 0.82;
+    }
+
+    [contenteditable]:focus {
+      outline: 2px solid var(--info-text);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 500px) {
+      .card { padding: 1.5rem 1.25rem; }
+      .bio-header { grid-template-columns: 72px 1fr; gap: 1rem; }
+      .avatar { width: 72px; height: 72px; font-size: 24px; }
+      h1 { font-size: 22px; }
+      .stats-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="bio-header">
+      <div class="avatar" id="avatarEl" title="Click to change photo">
+        <span id="avatarInitials">AJ</span>
+        <img id="avatarImg" alt="Profile photo" />
+      </div>
+      <div class="name-block">
+        <div class="role-badge">
+          <span class="role-dot"></span>
+          <span contenteditable="true">Product Designer</span>
+        </div>
+        <h1 contenteditable="true">Alex <em>Jordan</em></h1>
+        <div class="location" contenteditable="true">Georgetown, TX · Open to remote</div>
+      </div>
+    </div>
+
+    <hr />
+
+    <p class="bio-text" contenteditable="true">I design products that feel obvious in retrospect — the kind where users can't imagine it working any other way. With a background spanning enterprise SaaS and consumer apps, I focus on the space between strategy and craft: making sure the right thing also ships beautifully.</p>
+
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <button class="skill-tag" onclick="this.classList.toggle('active')">UX Research</button>
+      <button class="skill-tag" onclick="this.classList.toggle('active')">Figma</button>
+      <button class="skill-tag" onclick="this.classList.toggle('active')">Design Systems</button>
+      <button class="skill-tag" onclick="this.classList.toggle('active')">Prototyping</button>
+      <button class="skill-tag" onclick="this.classList.toggle('active')">HTML / CSS</button>
+      <button class="skill-tag" onclick="this.classList.toggle('active')">Product Strategy</button>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-num" contenteditable="true">7</span>
+        <span class="stat-lbl">Years experience</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" contenteditable="true">40+</span>
+        <span class="stat-lbl">Projects shipped</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" contenteditable="true">12</span>
+        <span class="stat-lbl">Happy clients</span>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="links-row">
+      <a class="link-btn primary" href="mailto:alex@example.com">Contact me</a>
+      <a class="link-btn" href="#" target="_blank">Portfolio</a>
+      <a class="link-btn" href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <a class="link-btn" href="https://github.com" target="_blank">GitHub</a>
+    </div>
+
+  </div>
+
+  <input type="file" id="avatarUpload" accept="image/*" style="display:none" />
+
+  <script>
+    const avatarEl = document.getElementById('avatarEl');
+    const avatarImg = document.getElementById('avatarImg');
+    const avatarInitials = document.getElementById('avatarInitials');
+    const avatarUpload = document.getElementById('avatarUpload');
+
+    avatarEl.addEventListener('click', () => avatarUpload.click());
+
+    avatarUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        avatarImg.src = ev.target.result;
+        avatarImg.style.display = 'block';
+        avatarInitials.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
