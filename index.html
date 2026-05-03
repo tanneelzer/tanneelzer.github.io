@@ -266,12 +266,6 @@
       opacity: 0.82;
     }
 
-    [contenteditable]:focus {
-      outline: 2px solid var(--info-text);
-      outline-offset: 3px;
-      border-radius: 3px;
-    }
-
     @media (max-width: 500px) {
       .card { padding: 1.5rem 1.25rem; }
       .bio-header { grid-template-columns: 72px 1fr; gap: 1rem; }
@@ -292,19 +286,24 @@
       <div class="name-block">
         <div class="role-badge">
           <span class="role-dot"></span>
-          <span contenteditable="true">Product Designer</span>
+          <!-- EDIT: Change your role below -->
+          <span>Product Designer</span>
         </div>
-        <h1 contenteditable="true">Alex <em>Jordan</em></h1>
-        <div class="location" contenteditable="true">Georgetown, TX · Open to remote</div>
+        <!-- EDIT: Change your name below -->
+        <h1>Teresa <em>TESTING</em></h1>
+        <!-- EDIT: Change your location below -->
+        <div class="location">Georgetown, TEXAS · Open to remote</div>
       </div>
     </div>
 
     <hr />
 
-    <p class="bio-text" contenteditable="true">I design products that feel obvious in retrospect — the kind where users can't imagine it working any other way. With a background spanning enterprise SaaS and consumer apps, I focus on the space between strategy and craft: making sure the right thing also ships beautifully.</p>
+    <!-- EDIT: Change your bio paragraph below -->
+    <p class="bio-text">I love to design products that feel obvious in retrospect — the kind where users can't imagine it working any other way. With a background spanning enterprise SaaS and consumer apps, I focus on the space between strategy and craft: making sure the right thing also ships beautifully.</p>
 
     <div class="section-label">Skills</div>
     <div class="skills-grid">
+      <!-- EDIT: Change or add skills below -->
       <button class="skill-tag" onclick="this.classList.toggle('active')">UX Research</button>
       <button class="skill-tag" onclick="this.classList.toggle('active')">Figma</button>
       <button class="skill-tag" onclick="this.classList.toggle('active')">Design Systems</button>
@@ -314,16 +313,17 @@
     </div>
 
     <div class="stats-row">
+      <!-- EDIT: Change your stats below -->
       <div class="stat-card">
-        <span class="stat-num" contenteditable="true">7</span>
+        <span class="stat-num">7</span>
         <span class="stat-lbl">Years experience</span>
       </div>
       <div class="stat-card">
-        <span class="stat-num" contenteditable="true">40+</span>
+        <span class="stat-num">40+</span>
         <span class="stat-lbl">Projects shipped</span>
       </div>
       <div class="stat-card">
-        <span class="stat-num" contenteditable="true">12</span>
+        <span class="stat-num">12</span>
         <span class="stat-lbl">Happy clients</span>
       </div>
     </div>
@@ -331,10 +331,11 @@
     <hr />
 
     <div class="links-row">
+      <!-- EDIT: Replace with your real email and links below -->
       <a class="link-btn primary" href="mailto:alex@example.com">Contact me</a>
       <a class="link-btn" href="#" target="_blank">Portfolio</a>
       <a class="link-btn" href="https://linkedin.com" target="_blank">LinkedIn</a>
-      <a class="link-btn" href="https://github.com" target="_blank">GitHub</a>
+      <a class="link-btn" href="https://github.com/tanneelzer" target="_blank">GitHub</a>
     </div>
 
   </div>
