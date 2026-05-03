@@ -1,2 +1,2 @@
-# tannelzer.github.io
+# tanneelzer.github.io
 Add sample bio page
